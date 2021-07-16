@@ -15,12 +15,17 @@ public class DecoratorTest {
 	private HotBeverage wSugar;
 	private HotBeverage wMilkAndSugar;
 	
+	private HotBeverage blacktea;
+	
 	@Before
 	public void setUp() throws Exception {
 		black = new BlackCoffee();
 		wMilk = new AddMilk(black);
 		wSugar = new AddSugar(black);
 		wMilkAndSugar = new AddMilk(wSugar);
+		
+		blacktea=new BlackTea();
+		
 	}
 
 	@Test
@@ -30,6 +35,7 @@ public class DecoratorTest {
 		assertEquals(wMilk.getCost(), 2.5, 0.001);
 		assertEquals(wSugar.getCost(), 2.25, 0.001);
 		assertEquals(wMilkAndSugar.getCost(), 2.75, 0.001);
+		assertEquals(blacktea.getCost(),3,0.001);
 		
 		// Check ingredients
 		List<String> blackIngredients = new ArrayList<String>();
